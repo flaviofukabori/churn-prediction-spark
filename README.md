@@ -2,14 +2,14 @@
 A PySpark project that build a classification model to predict user churn 
 analysing user activities on a music streaming app called Sparkify.
 
-More Project details can be found in this blog post[here] (https://medium.com/@flavio.fukabori/churn-prediction-with-pyspark-b95080e78d5):
+More Project details can be found in this blog post[here] (https://flavio-fukabori.medium.com/churn-prediction-with-pyspark-b95080e78d5):
 
 ### Table of Contents
 
 1. [Installation](#installation)
 2. [Project Motivation](#motivation)
 3. [File Descriptions](#files)
-5. [Licensing, Authors, and Acknowledgements](#licensing)
+4. [Licensing, Authors, and Acknowledgements](#licensing)
 
 ## Installation <a name="installation"></a>
 
@@ -42,6 +42,41 @@ Some techniques applied includes UDF functions, Window Function, Aggregation, Pi
 **Sparkify-EMR-AWS:** File used to run the full dataset on AWS EMR Cluster.
 
 To access full fataset in S3: "s3n://udacity-dsnd/sparkify/sparkify_event_data.json"
+
+
+## Results on small dataset:
+F1-Score
+
+LogisticRegression = 0.900
+RandomForest = 0.942
+LinearSVC = 0.852
+RandomForest had the best performance on the small dataset, with F1-score = 0.862
+
+The 3 models were run on the full dataset at Amazon EMR Cluster as well.
+
+## Results on full dataset, run on Amazon EMR Cluster:
+F1-Score
+
+LogisticRegression = 0.799
+RandomForest = 0.872
+LinearSVC = 0.679
+Conclusions:
+
+LinearSVC had a poor perfomance on the full dataset
+
+RandomForest had the best perfomance on the full dataset, with F1-score = 0.872.
+
+Based on the results above, I suggest to select RandomForest to deploy in production, as it has presented the best performance on the full dataset and has presented the lowest difference between the results on small and full dataset.
+
+If computation costs or model explicability is a constraint, I would pick LogisticRegression to deploy in production.
+
+## Future works
+
+Before a deployment in production, we could work on the followings steps:
+
+Run a new training increasing the quantity of hyperparameters and numFolds
+Run a new training with different algorithm, like boosting
+Analyse precision vs recall metrics and optmize the threshold based on the business goals. Prioritize precision if the cost of false positive is high, or prioritize recall if the cost of false negative is high.
 
 ## Licensing, Authors, Acknowledgements<a name="licensing"></a>
 
