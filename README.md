@@ -44,32 +44,6 @@ Some techniques applied includes UDF functions, Window Function, Aggregation, Pi
 To access full dataset in S3: "s3n://udacity-dsnd/sparkify/sparkify_event_data.json"
 
 
-## Results on small dataset:
-F1-Score on (cross-validation, test-set):
-
-- LogisticRegression = (0.863, 0.900)
-- RandomForest = (0.820, 0.942)
-- LinearSVC = (0.668, 0.852)
-
-RandomForest had the best performance on the small dataset, with F1-score = 0.942 on test-set. However, there was a high variance on metrics when cross-validation and test-set were compared.
-
-I suspected that the high variance was due to the small sample size on small dataset. To confirm that hypothesis, the same code was run on the full dataset at AWS EMR cluster
-
-## Results on full dataset, run on Amazon EMR Cluster:
-The 3 models were run on the full dataset at Amazon EMR Cluster as well:
-
-F1-Score on (cross-validation, test-set)
-
-- LogisticRegression = (0.805, 0.799)
-- RandomForest = (0.879, 0.872)
-- LinearSVC = (0.688, 0.679)
-
-As expected, the variance between cross-validation and test-set score on the full dataset is almost zero. This confirm the hypothesis of high variance on the small data set is due to sample size.
-
-Based on the results above, I suggest to select RandomForest to deploy in production, as it has presented the best performance on the full dataset and has presented the lowest difference between the results on small and full dataset.
-
-If computation costs or model explicability is a constraint, I would pick LogisticRegression to deploy in production.
-
 ## Future works
 
 Before a deployment in production, we could work on the followings steps:
