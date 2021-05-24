@@ -4,6 +4,8 @@ analysing user activities on a music streaming app called Sparkify.
 
 More Project details can be found in this blog post[here] (https://flavio-fukabori.medium.com/churn-prediction-with-pyspark-b95080e78d5):
 
+
+
 ### Table of Contents
 
 1. [Installation](#installation)
@@ -32,17 +34,23 @@ following the steps below:
 
 **Technical details*: 
 The project mainly uses Spark Dataframe API and Spark ML. 
-Some techniques applied includes UDF functions, Window Function, Aggregation, Pipeline, CrossValidator, ParamGridBuilder
+Some techniques applied includes UDF functions, Window Function, Aggregations, Pipeline, CrossValidator, ParamGridBuilder
 
 ## File Descriptions <a name="files"></a>
 
 **notebook** 
 
 **Sparkify.ipynb:** File used to run the sample dataset on Udacity environment.
-**Sparkify-EMR-AWS:** File used to run the full dataset on AWS EMR Cluster.
 
-To access full dataset in S3: "s3n://udacity-dsnd/sparkify/sparkify_event_data.json"
+Link to small dataset in "s3n://udacity-dsnd/sparkify/mini_sparkify_event_data.json"
+Dataset size: 128 MB
+Total number of rows: 286,500
 
+**Sparkify-EMR-AWS:** File used to run the full dataset on AWS EMR Cluster, with one 1 master node and 2 workers. m5.xlarge.
+
+Link to full dataset in S3: "s3n://udacity-dsnd/sparkify/sparkify_event_data.json"
+Dataset size: 12 GB
+Total number of rows: 26,259,199 (26 million)
 
 ## Future works
 
