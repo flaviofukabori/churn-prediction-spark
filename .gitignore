@@ -3,4 +3,4 @@
 *.tfvars
 *.lock.hcl
 *.pub
-.terraform/providers/
+terraform/.terraform/providers/
